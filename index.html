@@ -317,29 +317,15 @@
        Quando tiver o vídeo, remova este bloco inteiro e cole o <iframe>.
        Ver comentário no HTML: id="bloco-video"
     ───────────────────────────────────────────────────────────────── */
-    .video-placeholder {
-      background: var(--bg-card);
-      border: 2px dashed rgba(201,168,76,0.3);
-      border-radius: var(--radius-lg);
-      min-height: 360px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 14px; margin-top: 32px; padding: 40px;
-      text-align: center; color: var(--gray); font-size: 14px;
-    }
-    .video-placeholder .play-icon {
-      width: 64px; height: 64px;
-      border: 2px solid rgba(201,168,76,0.4);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .video-placeholder .play-icon svg { width: 24px; height: 24px; fill: var(--gold-dim); margin-left: 4px; }
-    .video-hint {
-      font-family: monospace; font-size: 12px;
-      background: rgba(255,255,255,0.06);
-      padding: 6px 12px; border-radius: 4px; color: var(--gold);
-    }
-
+    /* ─────────────────────────────────────────────────────────────────
+       SEÇÃO 11 — GIF demonstrativo
+       O GIF é inserido com <img> direto — nenhuma classe CSS especial
+       necessária. Os estilos (border-radius, sombra, margin) estão
+       aplicados inline na tag <img id="gif-produto"> no body.
+       Se no futuro quiser trocar para vídeo MP4 ou YouTube, use:
+         .video-wrapper  → div container com padding-bottom:56.25%
+         .video-wrapper iframe ou video → position:absolute, 100% x 100%
+    ───────────────────────────────────────────────────────────────── */
     /* ─────────────────────────────────────────────────────────────────
        IMAGEM DO PRODUTO  (Seção 12)
        id="imagem-produto" — para trocar a imagem, altere o atributo src.
@@ -723,15 +709,12 @@
       <h2 class="section-title text-center">Veja como funciona na prática</h2>
       <div class="divider"></div>
 
-      <!-- Remova este placeholder quando tiver o vídeo -->
-      <div style="position:relative;padding-bottom:56.25%;height:0;
-              overflow:hidden;border-radius:12px;margin-top:32px;">
-           <iframe
-             src="./MHS.gif"
-             style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-             allowfullscreen loading="lazy">
-           </iframe>
-      </div>
+      <img
+        src="MHS.gif"
+        alt="Método Honorário Seguro — demonstração"
+        style="display:block; width:100%; border-radius:...; ..."
+        loading="lazy"
+      />
 
     </div>
   </section>
