@@ -41,6 +41,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- ═══ META DOMAIN VERIFICATION ══════════════════════════════════════
+       Verificação de domínio no Meta Business Manager.
+       NÃO remova esta tag — necessária para o Pixel funcionar corretamente.
+  ═══════════════════════════════════════════════════════════════════ -->
+  <meta name="facebook-domain-verification" content="ewogxaav691g31jw394pm5xuixf3iv" />
+
   <!-- ═══ SEO / META ═══════════════════════════════════════════════════
        Altere title e description conforme seu posicionamento.
   ═══════════════════════════════════════════════════════════════════ -->
@@ -832,6 +838,35 @@
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ── META PIXEL EVENTS ──────────────────────────────────────────────
+    // ViewContent: dispara quando a página de vendas carrega
+    // Informa ao Meta que este visitante viu o produto (R$ 97)
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'ViewContent', {
+        content_name: 'Método Honorário Seguro',
+        content_category: 'Infoproduto',
+        content_ids: ['MHS-001'],
+        content_type: 'product',
+        value: 97.00,
+        currency: 'BRL'
+      });
+    }
+
+    // InitiateCheckout: dispara quando o visitante clica em qualquer botão CTA
+    // Sinaliza intenção de compra para o algoritmo do Meta
+    document.querySelectorAll('.btn-cta').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'InitiateCheckout', {
+            content_name: 'Método Honorário Seguro',
+            value: 97.00,
+            currency: 'BRL',
+            num_items: 1
+          });
         }
       });
     });
